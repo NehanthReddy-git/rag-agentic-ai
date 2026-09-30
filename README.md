@@ -48,7 +48,6 @@ rag-agentic-ai/
 ├── requirements.txt
 ├── .env.example
 ├── README.md
-├── sample_outputs.txt
 └── tests_sample_queries.py
 ```
 
@@ -58,7 +57,7 @@ rag-agentic-ai/
 
 1. Clone the repository and enter it:
 ```bash
-   git clone <YOUR_REPO_URL>
+   git clone https://github.com/NehanthReddy-git/rag-agentic-ai.git
    cd rag-agentic-ai
 ```
 2. Create and activate a virtual environment:
@@ -129,15 +128,17 @@ Results are also saved to `sample_outputs.txt`.
 
 ## Sample Results
 
+Confidence scores below were measured on the running system (top cosine similarity from Pinecone).
+
 | Query | Confidence | Result |
 |---|---|---|
-| What is Agentic AI according to the eBook? | <SCORE> | <one-line summary of answer> |
-| How do AI agents differ from traditional automation systems? | <SCORE> | <one-line summary of answer> |
-| What are the core components of an Agentic Architecture? | <SCORE> | <one-line summary of answer> |
-| What role does memory play in Agentic AI workflows? | <SCORE> | <one-line summary of answer> |
-| Who won the 2022 FIFA World Cup? | 0.496 | Refused: "I cannot answer based on the provided document." |
+| What is Agentic AI according to the eBook? | 0.79 | Relevant chunks retrieved; answer grounded in the eBook's description of agentic AI |
+| How do AI agents differ from traditional automation systems? | 0.75 | Answered: contrasts rule-based traditional automation / RPA with agentic systems |
+| What are the core components of an Agentic Architecture? | 0.79 | Answered: lists the layers of an agentic system, starting with the Decision-Making Layer |
+| What role does memory play in Agentic AI workflows? | 0.77 | Answered: describes long-term memory storing past interactions and successful task methods |
+| Who won the 2022 FIFA World Cup? | 0.50 | Refused: "I cannot answer based on the provided document." |
 
-Full outputs: see `sample_outputs.txt`.
+The four eBook queries score about 0.75 to 0.79 while the off-topic query scores about 0.50, which is why the retrieval threshold is set at 0.62. Running `python tests_sample_queries.py` regenerates full outputs in `sample_outputs.txt`.
 
 ## Design Choices
 
